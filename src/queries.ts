@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_USER = gql`
-  query (@login: String!) {
-    user (login: $login) {
+  query ($login: String!) {
+    user(login: $login) {
       name
       avatarUrl
       bio
@@ -11,12 +11,12 @@ export const GET_USER = gql`
         totalCount
         nodes {
           name
-          description,
+          description
           stargazerCount
           forkCount
-          url,
-          languages(first: 5)}
-            edges: {
+          url
+          languages(first: 5) {
+            edges {
               node {
                 name
               }

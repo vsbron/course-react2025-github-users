@@ -1,3 +1,4 @@
+// Type for Language data
 export type LanguageEdge = {
   node: {
     name: string;
@@ -5,6 +6,7 @@ export type LanguageEdge = {
   size: number;
 };
 
+// Type for Repository data
 export type Repository = {
   name: string;
   description: string;
@@ -16,6 +18,7 @@ export type Repository = {
   };
 };
 
+// Type for User data
 export type User = {
   name: string;
   avatarUrl: string;
