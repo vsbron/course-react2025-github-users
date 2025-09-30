@@ -30,7 +30,7 @@ function UsedLanguages({ repositories }: { repositories: Repository[] }) {
       <ChartContainer config={chartConfig} className="h-100 w-full">
         <BarChart accessibilityLayer data={popularLanguages}>
           <CartesianGrid vertical={false} />
-          <XAxis dataKey="language" tickLine={false} tickMargin={10} />
+          <XAxis dataKey="language" tickLine={true} tickMargin={10} />
           <YAxis dataKey="count" tickLine={false} tickMargin={10} />
           <ChartTooltip content={<ChartTooltipContent />} />
           <Bar dataKey="count" fill="var(--color-language)" radius={4} />

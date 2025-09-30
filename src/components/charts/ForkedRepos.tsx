@@ -17,20 +17,23 @@ function ForkedRepos({ repositories }: { repositories: Repository[] }) {
   const chartConfig = {
     repo: {
       label: "Repo",
-      color: "#2563eb",
+      color: "#facd12",
     },
   } satisfies ChartConfig;
 
   // Returned JSX
   return (
     <div>
-      <h2 className="text-2xl font-semibold text-center mb-4">
-        Most Forked Repos
-      </h2>
+      <h2 className="text-2xl font-semibold text-center mb-4">Forked Repos</h2>
       <ChartContainer config={chartConfig} className="h-100 w-full">
         <BarChart accessibilityLayer data={mostForkedRepos}>
           <CartesianGrid vertical={false} />
-          <XAxis dataKey="repo" tickLine={false} tickMargin={10} />
+          <XAxis
+            dataKey="repo"
+            tickLine={true}
+            tickMargin={10}
+            axisLine={false}
+          />
           <YAxis dataKey="count" tickLine={false} tickMargin={10} />
           <ChartTooltip content={<ChartTooltipContent />} />
           <Bar dataKey="count" fill="var(--color-repo)" radius={4} />

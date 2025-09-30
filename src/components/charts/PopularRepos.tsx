@@ -28,7 +28,7 @@ function PopularRepos({ repositories }: { repositories: Repository[] }) {
       <ChartContainer config={chartConfig} className="h-100 w-full">
         <BarChart accessibilityLayer data={popularRepos}>
           <CartesianGrid vertical={false} />
-          <XAxis dataKey="repo" tickLine={false} tickMargin={10} />
+          <XAxis dataKey="repo" tickLine={true} tickMargin={10} />
           <YAxis dataKey="stars" tickLine={false} tickMargin={10} />
           <ChartTooltip content={<ChartTooltipContent />} />
           <Bar dataKey="stars" fill="var(--color-repo)" radius={4} />

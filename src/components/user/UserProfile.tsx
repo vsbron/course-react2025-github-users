@@ -48,7 +48,7 @@ function UserProfile({ userName }: UserProfileProps) {
         gists={gists.totalCount}
       />
       {repositories.totalCount > 0 && (
-        <div className="grid- md:grid-col-2 gap-4">
+        <div className="grid md:grid-col-2 gap-6">
           <PopularRepos repositories={repositories.nodes} />
           <ForkedRepos repositories={repositories.nodes} />
           <UsedLanguages repositories={repositories.nodes} />
