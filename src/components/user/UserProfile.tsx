@@ -7,6 +7,7 @@ import PopularRepos from "../charts/PopularRepos";
 import { GET_USER } from "@/queries";
 import { type UserData } from "@/types";
 import UsedLanguages from "../charts/UsedLanguages";
+import Loading from "./Loading";
 
 // Props type
 type UserProfileProps = {
@@ -21,7 +22,7 @@ function UserProfile({ userName }: UserProfileProps) {
   });
 
   // Guard clauses
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
   if (error) return <h2 className="text-xl">{error.message}</h2>;
   if (!data) return <h2 className="text-xl">User Not Found</h2>;
 
@@ -48,7 +49,7 @@ function UserProfile({ userName }: UserProfileProps) {
         gists={gists.totalCount}
       />
       {repositories.totalCount > 0 && (
-        <div className="grid md:grid-col-2 gap-6">
+        <div className="grid md:grid-col-2 gap-10">
           <PopularRepos repositories={repositories.nodes} />
           <ForkedRepos repositories={repositories.nodes} />
           <UsedLanguages repositories={repositories.nodes} />
