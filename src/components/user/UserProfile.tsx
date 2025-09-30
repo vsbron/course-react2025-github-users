@@ -1,9 +1,11 @@
 import { useQuery } from "@apollo/client/react";
 
-import { GET_USER } from "@/queries";
-import { type UserData } from "@/types";
 import UserCard from "./UserCard";
 import StatsContainer from "./StatsContainer";
+import ForkedRepos from "../charts/ForkedRepos";
+import PopularRepos from "../charts/PopularRepos";
+import { GET_USER } from "@/queries";
+import { type UserData } from "@/types";
 
 // Props type
 type UserProfileProps = {
@@ -44,6 +46,12 @@ function UserProfile({ userName }: UserProfileProps) {
         following={following.totalCount}
         gists={gists.totalCount}
       />
+      {repositories.totalCount > 0 && (
+        <div className="grid- md:grid-col-2 gap-4">
+          <PopularRepos repositories={repositories.nodes} />
+          <ForkedRepos repositories={repositories.nodes} />
+        </div>
+      )}
     </div>
   );
 }
