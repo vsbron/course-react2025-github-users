@@ -43,12 +43,51 @@ export const calculateMostStarredRepos = (
 
   // Sort the repos by starred number and limit to 5
   const starredRepos = repositories
-    .map((repo) => {
-      return { repo: repo.name, stars: repo.stargazerCount };
-    })
+    .map((repo) => ({ repo: repo.name, stars: repo.stargazerCount }))
     .sort((a, b) => b.stars - a.stars)
     .slice(0, 5);
 
   // Return the array
   return starredRepos;
+};
+
+/**
+ * Calculates he top 5 most used programming languages across all repositories
+ * @param repositories Array of repository data from GitHub API
+ * @returns Array of objects containing language names and their occurrence counts
+ * Example return: [{ language: "JavaScript", count: 10}, { repo: "Python", count: 7}]
+ */
+export const calculatePopularLanguages = (
+  repositories: Repository[]
+): { language: string; count: number }[] => {
+  // Guard clause
+  if (repositories.length === 0) {
+    return [];
+  }
+
+  // Set up the empty languages array
+  const languageMap: { [key: string]: number } = {};
+
+  repositories.forEach((repo) => {
+    // Guard clause
+    if (repo.languages.edges.length === 0) {
+      return;
+    }
+
+    // Update the language map
+    repo.languages.edges.forEach((language) => {
+      const { name } = language.node;
+      languageMap[name] = (languageMap[name] || 0) + 1;
+    });
+  });
+
+  if (Object.keys(languageMap).length === 0) {
+    return [];
+  }
+
+  // Return the array
+  return Object.entries(languageMap)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, 5)
+    .map(([language, count]) => ({ language, count }));
 };

@@ -6,6 +6,7 @@ import ForkedRepos from "../charts/ForkedRepos";
 import PopularRepos from "../charts/PopularRepos";
 import { GET_USER } from "@/queries";
 import { type UserData } from "@/types";
+import UsedLanguages from "../charts/UsedLanguages";
 
 // Props type
 type UserProfileProps = {
@@ -50,6 +51,7 @@ function UserProfile({ userName }: UserProfileProps) {
         <div className="grid- md:grid-col-2 gap-4">
           <PopularRepos repositories={repositories.nodes} />
           <ForkedRepos repositories={repositories.nodes} />
+          <UsedLanguages repositories={repositories.nodes} />
         </div>
       )}
     </div>
