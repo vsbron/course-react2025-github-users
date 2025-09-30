@@ -31,7 +31,7 @@ export type User = {
   followers: {
     totalCount: number;
   };
-  wing: {
+  following: {
     totalCount: number;
   };
   gists: {
